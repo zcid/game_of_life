@@ -127,6 +127,8 @@ def play
   system("clear")
   print("What percentage would you like filled? (1-100, default 0) ")
   percent_filled = gets.chomp.to_i
+  print("How many iterations before prompt? ")
+  prompt_iters = gets.chomp.to_i
 
   #srand(10)
   # ititialize array and fill with random data
@@ -147,7 +149,10 @@ def play
     iterations -= 1
     puts "Rounds to go: #{iterations}"
     puts "Type quit to exit."
-    answer = gets.chomp
+    sleep(0.1)
+    if (iterations % prompt_iters) == 0
+      answer = gets.chomp
+    end
     (answer == "quit") ? break : nil
   end
   # loop game
